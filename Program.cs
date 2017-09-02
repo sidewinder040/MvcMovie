@@ -23,10 +23,12 @@ namespace MvcMovie
                 try
                 {
                     DBinitialize.EnsureCreated(services);
+                    SeedData.Initialize(services);
                 }
                     catch (Exception ex)
                 {
-                      var logger = services.GetRequiredService<ILogger<Program>>();                                logger.LogError(ex, "An error occurred seeding the DB."); }
+                      var logger = services.GetRequiredService<ILogger<Program>>();
+                      logger.LogError(ex, "An error occured creating and seeding the DB.");                                logger.LogError(ex, "An error occurred seeding the DB."); }
                 }
                 host.Run();
         }
